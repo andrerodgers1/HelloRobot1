@@ -8,7 +8,7 @@ class Piggy(object):
         print ("I AM ALIVE")
 
     def pulse(self):
-       """""check for obstacles, drive fixed amount forward"""""
+       """check for obstacles, drive fixed amount forward"""
        look = us dist(15)  # store the distance reading
        if look > 80:
            fwd()
@@ -18,7 +18,7 @@ class Piggy(object):
 
 
     def cruise (self):
-        """""drive fwd, stop if sensor detects obstacle 
+        """"drive fwd, stop if sensor detects obstacle"""
         fwd()
         while(True):
             if us dist(15) < 30:
@@ -26,16 +26,10 @@ class Piggy(object):
         time.sleep(.2)
     
     def servo_sweep(self):
-        """loops in a 120 degree arc and moves servo"""""
+        """loops in a 120 degree arc and moves servo"""
         for ang in range(20, 160, 2):
             servo(ang)
             time.sleep(.2)
-    
-    
-    def cha_cha(self):...
-    
-
-
 
 
    def cha_cha(self):
@@ -51,17 +45,16 @@ p = Piggy()
 
 def menu():
     while True:
-        input = raw input ("Press 1 for cruise \n Press 2 for pulse \n Press 3 for sweep")
+        input = raw input ("Press 1 for cruise \nPress 2 for pulse \nPress 3 for sweep\n")
         if "1" in input: 
             p.cruise()
         elif "2" in input:
             p.pulse()
-        elif "3" in input 
+        elif "3" in input:
             p.servo_sweep()
         
-try: 
-        menu()
-except Exception as ee:
-    print(ee)
+try:
+    menu()
+except(KeyboardInterrupt, SystemExit):
     from gopigo import *
     stop()
